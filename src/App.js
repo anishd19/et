@@ -9,6 +9,7 @@ import store from './store';
 
 import PrivateRoute from './components/common/PrivateRoute';
 import { Login } from './components/Login'
+import { Register } from './components/Register'
 import './App.css';
 
 if (localStorage.jwtToken) {
@@ -29,7 +30,7 @@ class App extends Component {
         <Router>
           <div className="App">
             <Route path="/login" component={Login}/>
-            {/* <Route path="/register" component={Register}/> */}
+            <Route path="/register" component={Register}/>
             <PrivateRoute exact path="/" component={Home}/>
             <PrivateRoute path="/dashboard" component={Dashboard}/>
           </div>

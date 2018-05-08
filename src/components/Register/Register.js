@@ -1,16 +1,17 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { loginUser } from '../../actions/authActions';
-import './Login.css'
+import { registerUser } from '../../actions/authActions';
+import './Register.css'
 
 
-class Login extends React.Component {
+class Register extends React.Component {
 
   constructor() {
     super();
     this.state = {
       redirectToReferrer: false,
+      username: '',
       email: '',
       password: '',
       errors: {}
@@ -22,13 +23,13 @@ class Login extends React.Component {
 
   componentDidMount() {
     if (this.props.auth && this.props.auth.isAuthenticated) {
-      this.setState({redirectToReferrer: true});
+      this.setState({ redirectToReferrer: true });
     }
   }
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.auth.isAuthenticated) {
-      this.setState({redirectToReferrer: true});
+      this.setState({ redirectToReferrer: true });
     }
 
     if (nextProps.errors) {
@@ -41,12 +42,13 @@ class Login extends React.Component {
 
     const userData = {
       user: {
+        username: this.state.username,
         email: this.state.email,
         password: this.state.password
       }
     };
 
-    this.props.loginUser(userData);
+    this.props.registerUser(userData, this.props.history);
   }
 
   onChange(e) {
@@ -65,8 +67,23 @@ class Login extends React.Component {
       <div className="container" id="login-form">
         <div className="field">
           <p className="control has-icons-left has-icons-right">
-            <input 
-              className="input" 
+            <input
+              className="input"
+              type="username"
+              name="username"
+              placeholder="Username"
+              value={this.state.username}
+              onChange={this.onChange}
+            />
+            <span className="icon is-small is-left">
+              <i className="fas fa-user"></i>
+            </span>
+          </p>
+        </div>
+        <div className="field">
+          <p className="control has-icons-left has-icons-right">
+            <input
+              className="input"
               type="email"
               name="email"
               placeholder="Email"
@@ -76,18 +93,15 @@ class Login extends React.Component {
             <span className="icon is-small is-left">
               <i className="fas fa-envelope"></i>
             </span>
-            <span className="icon is-small is-right">
-              <i className="fas fa-check"></i>
-            </span>
           </p>
         </div>
         <div className="field">
           <p className="control has-icons-left">
-            <input 
-              className="input" 
-              type="password" 
+            <input
+              className="input"
+              type="password"
               name="password"
-              placeholder="Password" 
+              placeholder="Password"
               value={this.state.password}
               onChange={this.onChange}
             />
@@ -99,7 +113,7 @@ class Login extends React.Component {
         <div className="field">
           <p className="control">
             <button className="button is-success" onClick={this.onSubmit}>
-              Login
+              Register
             </button>
           </p>
         </div>
@@ -113,5 +127,5 @@ const mapStateToProps = state => ({
   errors: state.errors
 });
 
-const connectedLogin = connect(mapStateToProps, { loginUser })(Login);
-export { connectedLogin as Login };
+const connectedRegister = connect(mapStateToProps, { registerUser })(Register);
+export { connectedRegister as Register };
