@@ -1,3 +1,7 @@
 export const GET_ERRORS = 'GET_ERRORS';
 export const CLEAR_ERRORS = 'CLEAR_ERRORS';
 export const SET_CURRENT_USER = 'SET_CURRENT_USER';
+export const EXPENSE_LOADING = 'EXPENSE_LOADING';
+export const GET_EXPENSES = 'GET_EXPENSES';
+export const ADD_EXPENSE = 'ADD_EXPENSE';
+export const DELETE_EXPENSE = 'DELETE_EXPENSE';

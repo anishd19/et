@@ -10,6 +10,7 @@ import store from './store';
 import PrivateRoute from './components/common/PrivateRoute';
 import { Login } from './components/Login'
 import { Register } from './components/Register'
+import { Home } from './components/Home'
 import './App.css';
 
 if (localStorage.jwtToken) {
@@ -38,10 +39,6 @@ class App extends Component {
       </Provider>
       );
   }
-}
-
-const Home = () => {
-  return <div> Home Page </div>
 }
 
 const Dashboard = () => {
