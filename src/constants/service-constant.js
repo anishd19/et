@@ -1,4 +1,4 @@
-const HOST = 'http://localhost:1234';
+const HOST = process.env.dbhost || 'http://localhost:1234';
 
 export const SERVICE_CONSTANT = {
     LOGIN: HOST + '/api/users/login',
