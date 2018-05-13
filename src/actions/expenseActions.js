@@ -10,6 +10,20 @@ import {
   DELETE_EXPENSE
 } from './types';
 
+export const addExpense = postData => dispatch => {
+  axios
+    .post(SERVICE_CONSTANT.ADD_EXPENSES, postData)
+    .then(res =>
+      dispatch(getExpenses())
+    )
+    .catch(err =>
+      dispatch({
+        type: GET_ERRORS,
+        payload: err.response.data
+      })
+    );
+};
+
 export const getExpenses = () => dispatch => {
   dispatch(setExpenseLoading());
   axios

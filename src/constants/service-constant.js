@@ -5,4 +5,5 @@ export const SERVICE_CONSTANT = {
     REGISTER: HOST + '/api/users',
     READ_EXPENSES: HOST + '/api/expenses',
     DELETE_EXPENSE: HOST + '/api/expenses',
+    ADD_EXPENSES: HOST + '/api/expenses'
 }
