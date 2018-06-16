@@ -14,7 +14,7 @@ class Home extends Component {
     
     return (
       <div className="container is-two-quarters">
-        {expenses.map((expense) => {
+        {expenses ? expenses.map((expense) => {
           return (
             <div className="box">
               <div className="block">
@@ -42,7 +42,7 @@ class Home extends Component {
                 </div>
             </div>
           )
-        })}
+        }) : null}
         <ExpenseForm/>
       </div>
     );
