@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { addExpense } from '../../actions/expenseActions';
+import './ExpenseForm.css';
 
 class ExpenseForm extends Component {
   constructor(props) {
@@ -47,7 +48,7 @@ class ExpenseForm extends Component {
     const { errors } = this.state;
 
     return (
-      <div className="container">
+      <div className="container" id="expense-form">
         <div className="field is-horizontal">
           <div className="field-body">
             <div className="field">
