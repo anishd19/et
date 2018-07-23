@@ -64,14 +64,14 @@ class Login extends Component {
     }
 
     return (
-      <section class="hero is-fullheight landing">
-        <div class="hero-body">
+      <section className="hero is-fullheight landing">
+        <div className="hero-body">
           <div className="container has-text-centered" id="login-form">
             <div className="box">
               <div>
                 <Logo />
               </div>
-              <h3 class="title">Login</h3>
+              <h3 className="title">Login</h3>
               <form>
                 <div className="field">
                   <p className="control has-icons-left has-icons-right">
@@ -106,10 +106,10 @@ class Login extends Component {
                     </span>
                   </p>
                 </div>
-                <button class="button is-block is-info is-large is-fullwidth" onClick={this.onSubmit}>Submit</button>
+                <button className="button is-block is-info is-large is-fullwidth" onClick={this.onSubmit}>Submit</button>
               </form>
               <div>
-                <p class="has-text-grey sub-menu">
+                <p className="has-text-grey sub-menu">
                   <Link to="/register">Sign Up</Link> &nbsp;·&nbsp;
                 <a href="../">Forgot Password</a> &nbsp;·&nbsp;
                 <a href="../">Need Help?</a>
