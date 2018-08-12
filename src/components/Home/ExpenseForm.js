@@ -28,11 +28,16 @@ class ExpenseForm extends Component {
 
   onSubmit(e) {
     const { user } = this.props.auth;
+    let tags = [];
+
+    this.state.tags.split(',').map((tag) => {
+      tags.push({name: tag, color: 'green'})
+    })
 
     const newExpense = {
       expenses: [{
         time: Date.now(),
-        categorysel: [],
+        categorysel: tags,
         title: this.state.title,
         amount: this.state.amount
       }],
@@ -69,7 +74,7 @@ class ExpenseForm extends Component {
           Add Expense
         </button>
         <div className={"modal " + (showModal ? "is-active" : null)}>
-          <div class="modal-background" onClick={this.closeModal}></div>
+          <div className="modal-background" onClick={this.closeModal}></div>
           <div className="modal-content">
             <div className="box" id="expense-form">
               <div className="field is-horizontal">
@@ -94,14 +99,27 @@ class ExpenseForm extends Component {
                       onChange={this.onChange}
                     />
                   </div>
-                  <div className="field">
-                    <p className="control">
-                      <button className="button is-success" onClick={this.onSubmit}>
-                        Submit
-                      </button>
-                    </p>
-                  </div>
                 </div>
+              </div>
+              <div className="field">
+                <div className="control">
+                  <textarea
+                    className="textarea is-warning tags"
+                    type="text"
+                    name="tags"
+                    placeholder="comma separated tags"
+                    value={this.state.tags}
+                    onChange={this.onChange}
+                  >
+                  </textarea>
+                </div>
+              </div>
+              <div className="field">
+                <p className="control">
+                  <button className="button is-success is-fullwidth" onClick={this.onSubmit}>
+                    Submit
+                  </button>
+                </p>
               </div>
             </div>
           </div>

@@ -18,27 +18,38 @@ class Home extends Component {
         <Navbar />
         <div className="box">
           <div className="block">
-            <h1 className="is-pulled-left title is-6">Expense Title</h1>
-            <p className="is-pulled-right title is-6">Amount</p>
+            <div className="columns">
+              <div className="column">
+                <h1 className="title is-6">Expense Title</h1>
+              </div>
+              <div className="column">
+                <h1 className="title is-6"> Tags </h1>
+              </div>
+              <div className="column">
+                <p className="title is-6 is-pulled-right">Amount</p>
+              </div>
+            </div>
           </div>
         </div>
-        {expenses ? expenses.map((expense) => {
+        {expenses ? expenses.map((expense, key) => {
           return (
-            <div className="box">
-              <div className="block">
-                <h1 className="is-pulled-left">{expense.title}</h1>
-                <p className="is-pulled-right">{expense.amount}</p>
-              </div>
+            <div className="box" key={key}>
               <div className="block">
                 <div className="columns">
                   <div className="column">
-                    {expense.categorysel.map((category) => {
+                    <h1 className="is-pulled-left">{expense.title}</h1>
+                  </div>
+                  <div className="column">
+                    {expense.categorysel.map((category, index) => {
                       return (
-                        <div className="tag is-medium" style={{ background: category.color, color: 'red' }}>
+                        <div className="tag is-large is-warning" key={index}>
                           {category.name}
                         </div>
                       );
                     })}
+                  </div>
+                  <div className="column">
+                    <p className="is-pulled-right">{expense.amount}</p>
                   </div>
                 </div>
               </div>
@@ -50,6 +61,7 @@ class Home extends Component {
     );
   }
 }
+
 
 const mapStateToProps = state => ({
   expenses: state.expenses
