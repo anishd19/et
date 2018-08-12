@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Redirect, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { registerUser } from '../../actions/authActions';
+import ListErrors from '../common/ListErrors';
 import './Register.css'
 
 import { Logo } from '../Logo';
@@ -73,6 +74,7 @@ class Register extends Component {
                 <Logo />
               </div>
               <h3 className="title">Register</h3>
+              <ListErrors errors={this.props.errors} />
               <form>
                 <div className="field">
                   <p className="control has-icons-left has-icons-right">
