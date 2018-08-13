@@ -11,7 +11,8 @@ class ExpenseForm extends Component {
       amount: '',
       categories: [],
       errors: {},
-      showModal: false
+      showModal: false,
+      tags: ''
     }
 
     this.onChange = this.onChange.bind(this);
@@ -30,7 +31,7 @@ class ExpenseForm extends Component {
     const { user } = this.props.auth;
     let tags = [];
 
-    this.state.tags.split(',').map((tag) => {
+    this.state.tags && this.state.tags.split(',').map((tag) => {
       tags.push({name: tag, color: 'green'})
     })
 
