@@ -1,0 +1,11 @@
+.box {
+  .button {
+    display: none;
+    margin-right: 10px;
+  }
+  &:hover {
+    .button {
+      display: inline;
+    }
+  }
+}

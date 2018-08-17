@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getExpenses } from '../../actions/expenseActions';
+import { getExpenses, deleteExpense } from '../../actions/expenseActions';
 import { ExpenseForm } from './ExpenseForm';
 import { Navbar } from '../Navbar';
+import ExpenseCard from './ExpenseCard';
 import './Home.css';
 
 class Home extends Component {
@@ -11,7 +12,7 @@ class Home extends Component {
   }
 
   render() {
-    const { expenses, categoryList } = this.props.expenses;
+    const { expenses } = this.props.expenses;
 
     return (
       <div className="container is-two-quarters">
@@ -33,27 +34,12 @@ class Home extends Component {
         </div>
         {expenses ? expenses.map((expense, key) => {
           return (
-            <div className="box" key={key}>
-              <div className="block">
-                <div className="columns">
-                  <div className="column">
-                    <h1 className="is-pulled-left">{expense.title}</h1>
-                  </div>
-                  <div className="column">
-                    {expense.categorysel.map((category, index) => {
-                      return (
-                        <div className="tag is-large is-warning" key={index}>
-                          {category.name}
-                        </div>
-                      );
-                    })}
-                  </div>
-                  <div className="column">
-                    <p className="is-pulled-right">{expense.amount}</p>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <ExpenseCard 
+              expense={expense} 
+              key={key}
+              username={this.props.auth.user.username}
+              deleteExpense={this.props.deleteExpense} 
+            />
           )
         }) : null}
         <ExpenseForm />
@@ -64,8 +50,9 @@ class Home extends Component {
 
 
 const mapStateToProps = state => ({
-  expenses: state.expenses
+  expenses: state.expenses,
+  auth: state.auth
 });
 
-const connectedHome = connect(mapStateToProps, { getExpenses })(Home);
+const connectedHome = connect(mapStateToProps, { getExpenses, deleteExpense })(Home);
 export { connectedHome as Home };
